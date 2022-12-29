@@ -10,7 +10,7 @@ export const SettingArea = (() => {
   const [ freq2, setFreq2 ] = useState('');
   const [ damp2, setDamp2 ] = useState('');
 
-  const { params, setParams } = useContext(RayleighContext);
+  const setParams = useContext(RayleighContext).setParams;
   let disabled = false;
 
   const onChangeFreq1 = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +32,7 @@ export const SettingArea = (() => {
     if (Number.isNaN(damp1)) allValid = false;
     if (Number.isNaN(freq2)) allValid = false;
     if (Number.isNaN(damp2)) allValid = false;
+    if (Number(freq1) === Number(freq2)) allValid = false;
     if (allValid) {
       setParams(calcRayleighParams(Number(freq1), Number(damp1), Number(freq2), Number(damp2)));
     } else {
