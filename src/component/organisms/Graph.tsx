@@ -9,31 +9,31 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { GraphRangeContext } from "../../providers/GraphProvider";
 import { RayleighContext } from "../../providers/RayleighProvider";
 import { generateData } from "../../util/generateData";
 
 export const Graph = memo(() => {
-  const params = useContext(RayleighContext).params;
-  const data = generateData(params);
+  const rayleighParams = useContext(RayleighContext).params;
+  const data = generateData(rayleighParams);
+  const graphRange = useContext(GraphRangeContext).params;
   return (
-    <ResponsiveContainer width="50%" height={400}>
+    <ResponsiveContainer width="100%" height={500}>
       <LineChart
-        width={600}
-        height={400}
         data={data}
-        margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+        margin={{ top: 50, right: 50 }}
       >
         <Line type="monotone" dataKey="y" stroke="teal" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="x" interval={8} scale="log">
-          <Label value="frequency" position="bottom" />
+        <XAxis type="number" dataKey="x" scale="log" domain={[graphRange.xLowerBound, graphRange.xUpperBound]} allowDataOverflow={true} interval={8}>
+          {/* <Label value="frequency" position="bottom" /> */}
         </XAxis>
-        <YAxis>
-          <Label value="damping factor" position="left" angle={-90} />
+        <YAxis type="number" domain={[graphRange.yLowerBound, graphRange.yUpperBound]} allowDataOverflow={true}>
+        {/* <Label value="damping factor" position="left" angle={-90} />         */}
         </YAxis>
         <Tooltip
           cursor={false}
-          position={{ x: 90, y: 30 }}
+          position={{ x: 60, y: 50 }}
           labelStyle={{ color: "teal" }}
           labelFormatter={(label) => "x : " + label}
           formatter={(value) => Number(value).toExponential(3)}

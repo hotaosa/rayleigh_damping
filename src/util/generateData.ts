@@ -13,10 +13,10 @@ export function generateData(params: Rayleigh): XYData {
     data.push({ x: 0, y: 0 });
     return data;
   }
-  let x = 10;
+  let x = 1;
   let y = calcDampingFactor(params, x);
   data.push({x, y});
-  while (x < 10000) {
+  while (x < 100000) {
     let dx = x;
     for (let i = 0; i < 9; ++i) {
       x += dx;
