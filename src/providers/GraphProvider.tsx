@@ -10,7 +10,7 @@ export const GraphRangeContext = createContext<GraphContextType>({} as GraphCont
 
 export const GraphRangeProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [params, setParams] = useState<GraphRange>({ xLowerBound: 10, xUpperBound: 1000, yLowerBound: 0, yUpperBound: 0.5 });
+  const [params, setParams] = useState<GraphRange>({ xLowerBound: 10, xUpperBound: 10000, yLowerBound: 0, yUpperBound: 1 });
 
   return (
     <GraphRangeContext.Provider value={{ params, setParams }}>
