@@ -22,13 +22,22 @@ export const Graph = memo(() => {
   return (
     <Stack w="100%" pt={10} align="center">
       <HStack h={5}>
-        <CopyableText fontSize="lg" prefix="α: ">
-          {rayleighParams.alpha.toExponential(3)}
-        </CopyableText>
+        {rayleighParams.isValid ? (
+          <CopyableText fontSize="lg" prefix="α: ">
+            {rayleighParams.alpha.toExponential(3)}
+          </CopyableText>
+        ) : (
+          <Box w={5} />
+        )}
         <Box w={5} />
-        <CopyableText fontSize="lg" prefix="β: ">
-          {rayleighParams.beta.toExponential(3)}
-        </CopyableText>
+        {rayleighParams.isValid ? (
+          <CopyableText fontSize="lg" prefix="β: ">
+            {rayleighParams.beta.toExponential(3)}
+          </CopyableText>
+        ) : (
+          <Box w={5} />
+        )}
+        
       </HStack>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart data={data} margin={{ right: 50 }}>
