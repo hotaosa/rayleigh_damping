@@ -2,7 +2,14 @@
   "name": "rayleigh_damping",
   "homepage": "https://hotaosa.github.io/rayleigh_damping",
   "version": "0.1.0",
+  "main": "src/index.tsx",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hotaosa/rayleigh_damping"
+  },
+  "author": "hotaosa <hotaosa12@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@chakra-ui/react": "^2.4.5",
     "@emotion/react": "^11.10.5",
