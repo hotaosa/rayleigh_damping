@@ -5,7 +5,7 @@ import { PrimaryButton } from "../atoms/PrimaryButton";
 
 export const GraphRangeInput = () => {
   const [ xLowerBound, setXLowerBound ] = useState("10");
-  const [ xUpperBound, setXUpperBound ] = useState("1000");
+  const [ xUpperBound, setXUpperBound ] = useState("10000");
   const [ yLowerBound, setYLowerBound ] = useState("0");
   const [ yUpperBound, setYUpperBound ] = useState("1");
   const [ isValid, setIsValid ] = useState(false);

@@ -1,4 +1,5 @@
 import { Text, Tooltip, useClipboard } from '@chakra-ui/react';
+import { useEffect } from 'react';
 
 type Props = {
   children: string;
@@ -10,6 +11,10 @@ type Props = {
 export const CopyableText = ((props: Props) => {
   const { children, prefix = "", fontSize = "md", color = "gray.600"} = props;
   const { onCopy, value, setValue } = useClipboard(children);
+
+  useEffect(() => {
+    setValue(children);
+  }, [children]);
 
   return (
     <Tooltip label="Copy to clipboard">
