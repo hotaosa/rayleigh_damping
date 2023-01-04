@@ -2,7 +2,7 @@
   "name": "rayleigh_damping",
   "homepage": "https://hotaosa.github.io/rayleigh_damping",
   "version": "0.1.0",
-  "main": "src/index.tsx",
+  "main": "public/electron.js",
   "private": true,
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "d3-scale": "^4.0.2",
+    "electron-is-dev": "^2.0.0",
     "framer-motion": "^8.0.2",
     "gh-pages": "^4.0.0",
     "react": "^18.2.0",
@@ -32,8 +33,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "react-start": "cross-env BROWSER=none react-scripts start",
+    "react-build": "react-scripts build",
+    "electron-start": "wait-on http://localhost:3000 && electron .",
+    "electron-build": "electron-builder",
+    "electron-build-win": "electron-builder --win --x64",
+    "start": "run-p react-start electron-start",
+    "build": "run-s react-build electron-build",
+    "build-win": "run-s react-build electron-build-win",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -54,5 +61,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^22.0.0",
+    "electron-builder": "^23.6.0",
+    "npm-run-all": "^4.1.5",
+    "wait-on": "^7.0.1"
   }
 }
