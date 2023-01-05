@@ -9,15 +9,15 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { GraphRangeContext } from "../../providers/GraphProvider";
+import { FreqRangeContext } from "../../providers/FreqRangeProvider";
 import { RayleighContext } from "../../providers/RayleighProvider";
 import { generateData } from "../../util/generateData";
 import { CopyableText } from "../molecules/CopyableText";
 
 export const Graph = memo(() => {
   const rayleighParams = useContext(RayleighContext).params;
-  const data = generateData(rayleighParams);
-  const graphRange = useContext(GraphRangeContext).params;
+  const freqRange = useContext(FreqRangeContext).params;
+  const data = generateData(rayleighParams, freqRange);
 
   return (
     <Stack w="100%" pt={10} align="center">
@@ -37,7 +37,6 @@ export const Graph = memo(() => {
         ) : (
           <Box w={5} />
         )}
-        
       </HStack>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart data={data} margin={{ right: 50 }}>
@@ -47,14 +46,11 @@ export const Graph = memo(() => {
             type="number"
             dataKey="x"
             scale="log"
-            domain={[graphRange.xLowerBound, graphRange.xUpperBound]}
-            allowDataOverflow={true}
+            domain={[freqRange.lowerBound, freqRange.upperBound]}
             interval={8}
           />
           <YAxis
             type="number"
-            domain={[graphRange.yLowerBound, graphRange.yUpperBound]}
-            allowDataOverflow={true}
           />
           <Tooltip
             cursor={false}
