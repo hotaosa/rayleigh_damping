@@ -24,7 +24,7 @@ export const Graph = memo(() => {
       <HStack h={5}>
         {rayleighParams.isValid ? (
           <CopyableText fontSize="lg" prefix="α: ">
-            {rayleighParams.alpha.toExponential(3)}
+            {rayleighParams.alpha.toPrecision(4)}
           </CopyableText>
         ) : (
           <Box w={5} />
