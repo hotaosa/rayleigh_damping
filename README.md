@@ -1,3 +1,4 @@
 # Rayleigh Damping Calculator
 
-TODO: write
+[GitHub Pages](https://hotaosa.github.io/rayleigh_damping/)
+![capture](public/capture.png)
