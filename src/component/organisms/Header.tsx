@@ -1,4 +1,5 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { Flex, Heading, Link } from "@chakra-ui/react";
 
 export const Header = () => {
   return (
@@ -12,6 +13,9 @@ export const Header = () => {
       <Heading as="h1" fontSize="lg">
         Rayleigh Damping Calculator
       </Heading>
+      <Link href="https://github.com/hotaosa/rayleigh_damping" isExternal fontWeight="bold">
+        GitHub <ExternalLinkIcon mx='2px' />
+      </Link>
     </Flex>
   );
 };
