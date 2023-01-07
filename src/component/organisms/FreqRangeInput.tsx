@@ -53,7 +53,7 @@ export const FreqRangeInput = () => {
   return (
     <Stack spacing="2">
       <Text fontSize="lg" as="ins" color="gray.600">
-        Graph Range
+        Graph Range (Frequency)
       </Text>
       <HStack pl={4} pr={4}>
         <Input size="md" placeholder="lower bound" onChange={onChangeLowerBound} />
